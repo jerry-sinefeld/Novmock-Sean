@@ -248,17 +248,3 @@ function auditor($conn, $userid, $code, $long){
     $conn = null;
     return true;
 }
-
-function book_audit($conn, $book_id,$code, $long){
-    $sql= "INSERT INTO bookaudit (book_id,date,code,longdesc) VALUES(?,?,?,?)";
-    $stmt = $conn->prepare($sql);
-    $date = date("Y-m-d"); // this is the exact structure the mysql date field accepts only
-    $stmt->bindParam(1, $book_id); //bind parameters for security
-    $stmt->bindParam(2, $date);
-    $stmt->bindParam(3, $code);
-    $stmt->bindParam(4, $long);
-
-    $stmt->execute();
-    $conn = null;
-    return true;
-}

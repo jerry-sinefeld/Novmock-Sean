@@ -13,7 +13,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {//this block must always be at the t
      the string before beginning the transfer to a time */
         if (commit_booking(dbconnect_insert(), $epoch_time)) {
             $_SESSION['usermessage'] = "SUCCESS: YOUR BOOKING HAS BEEN CREATED!";
-            book_audit(dbconnect_insert(), $_SESSION['userid'], "log", "User has created a booking");
+            auditor(dbconnect_insert(), $_SESSION['userid'], "log", "User has created a booking");
             header("Location: bookings.php");
             exit;
         } else {

@@ -13,7 +13,7 @@ if (!isset($_SESSION['userid'])) {
         try {
             if (cancel_book(dbconnect_insert(), $_POST['book_id'])) {
                 $_SESSION['usermessage'] = "Appointment cancelled.";
-                book_audit(dbconnect_insert(), $_SESSION['userid'], "log", "User has cancelled appointment");
+                auditor(dbconnect_insert(), $_SESSION['userid'], "log", "User has cancelled appointment");
             } else {
                 $_SESSION['usermessage'] = "Appointment could not be cancelled.";
             }
